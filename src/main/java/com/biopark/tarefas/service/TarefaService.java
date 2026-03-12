@@ -1,11 +1,13 @@
 package com.biopark.tarefas.service;
 
-import com.biopark.tarefas.model.Tarefa;
-import com.biopark.tarefas.repository.TarefaRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.biopark.tarefas.model.Tarefa;
+import com.biopark.tarefas.model.TarefaStatus;
+import com.biopark.tarefas.repository.TarefaRepository;
 
 @Service
 public class TarefaService {
@@ -24,6 +26,14 @@ public class TarefaService {
         return tarefaRepository.findAll();
     }
 
+    public List<Tarefa> listarPendentes() {
+        return tarefaRepository.findByStatus(TarefaStatus.PENDING);
+    }
+
+    public List<Tarefa> listarConcluidas() {
+        return tarefaRepository.findByStatus(TarefaStatus.FINISHED);
+    }
+
     public Optional<Tarefa> buscarPorId(Long id) {
         return tarefaRepository.findById(id);
     }
@@ -32,10 +42,13 @@ public class TarefaService {
         tarefaRepository.deleteById(id);
     }
 
-    public void alterarStatus(Long id) {
-        tarefaRepository.findById(id).ifPresent(tarefa -> {
-            tarefa.setConcluida(!tarefa.getConcluida());
-            tarefaRepository.save(tarefa);
-        });
-    }
+    
+    // public void alterarStatus(Long id) {
+    //     tarefaRepository.findById(id).ifPresent(tarefa -> {
+    //         tarefa.setConcluida(!tarefa.getConcluida());
+    //         tarefaRepository.save(tarefa);
+    //     });
+    // }
+
+    
 }

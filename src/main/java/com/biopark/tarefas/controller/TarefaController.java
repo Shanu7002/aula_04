@@ -28,6 +28,18 @@ public class TarefaController {
         return "tarefas/lista";
     }
 
+    @GetMapping("/pendentes")
+    public String listarPendentes(Model model) {
+        model.addAttribute("tarefas", tarefaService.listarPendentes());
+        return "tarefas/lista";
+    }
+
+    @GetMapping("/concluidas")
+    public String listarConcluidas(Model model) {
+        model.addAttribute("tarefas", tarefaService.listarConcluidas());
+        return "tarefas/lista";
+    }
+
     @GetMapping("/novo")
     public String novoFormulario(Model model) {
         model.addAttribute("tarefa", new Tarefa());
@@ -80,10 +92,10 @@ public class TarefaController {
         return "redirect:/tarefas";
     }
 
-    @GetMapping("/status/{id}")
-    public String alternarStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        tarefaService.alterarStatus(id);
-        redirectAttributes.addFlashAttribute("mensagem", "Status da tarefa alterado!");
-        return "redirect:/tarefas";
-    }
+    // @GetMapping("/status/{id}")
+    // public String alternarStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    //     tarefaService.alterarStatus(id);
+    //     redirectAttributes.addFlashAttribute("mensagem", "Status da tarefa alterado!");
+    //     return "redirect:/tarefas";
+    // }
 }

@@ -1,13 +1,15 @@
 package com.biopark.tarefas.repository;
 
-import com.biopark.tarefas.model.Tarefa;
-import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+
+import com.biopark.tarefas.model.Tarefa;
+import com.biopark.tarefas.model.TarefaStatus;
 
 @Repository
 public class TarefaRepository {
@@ -41,6 +43,19 @@ public class TarefaRepository {
 
     public Optional<Tarefa> findById(Long id) {
         return Optional.ofNullable(tarefas.get(id));
+    }
+
+    public List<Tarefa> findByStatus(TarefaStatus status) {
+        List<Tarefa> list = new ArrayList<>(tarefas.values());
+        List<Tarefa> finalList = new ArrayList<>();
+
+        for (Tarefa tarefa : list) {
+            if (tarefa.getStatus() == status) {
+                finalList.add(tarefa);
+            }
+        }
+
+        return finalList;
     }
 
     public void deleteById(Long id) {
