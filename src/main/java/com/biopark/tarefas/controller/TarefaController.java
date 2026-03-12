@@ -1,8 +1,5 @@
 package com.biopark.tarefas.controller;
 
-import com.biopark.tarefas.model.Tarefa;
-import com.biopark.tarefas.service.TarefaService;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.biopark.tarefas.model.Tarefa;
+import com.biopark.tarefas.service.TarefaService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/tarefas")
@@ -25,6 +27,18 @@ public class TarefaController {
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("tarefas", tarefaService.listarTodas());
+        return "tarefas/lista";
+    }
+
+    @GetMapping("/pendentes")
+    public String listarPendentes(Model model) {
+        model.addAttribute("tarefas", tarefaService.listarPendentes());
+        return "tarefas/lista";
+    }
+
+    @GetMapping("/concluidas")
+    public String listarConcluidas(Model model) {
+        model.addAttribute("tarefas", tarefaService.listarConcluidas());
         return "tarefas/lista";
     }
 
@@ -80,10 +94,10 @@ public class TarefaController {
         return "redirect:/tarefas";
     }
 
-    @GetMapping("/status/{id}")
-    public String alternarStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        tarefaService.alterarStatus(id);
-        redirectAttributes.addFlashAttribute("mensagem", "Status da tarefa alterado!");
-        return "redirect:/tarefas";
-    }
+    // @GetMapping("/status/{id}")
+    // public String alternarStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    //     tarefaService.alterarStatus(id);
+    //     redirectAttributes.addFlashAttribute("mensagem", "Status da tarefa alterado!");
+    //     return "redirect:/tarefas";
+    // }
 }

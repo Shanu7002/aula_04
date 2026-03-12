@@ -23,9 +23,10 @@ public class Tarefa {
     public Tarefa() {
     }
 
-    public Tarefa(String titulo, String descricao) {
+    public Tarefa(String titulo, String descricao, TarefaStatus status) {
         this.titulo = titulo;
         this.descricao = descricao;
+        this.status = status;
     }
 
     public Long getId() {
