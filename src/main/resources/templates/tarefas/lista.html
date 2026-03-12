@@ -34,8 +34,8 @@
                     <td th:text="${tarefa.titulo}"></td>
                     <td th:text="${tarefa.descricao}"></td>
                     <td>
-                        <span th:if="${tarefa.concluida}" class="status status-concluida">Concluída</span>
-                        <span th:unless="${tarefa.concluida}" class="status status-pendente">Pendente</span>
+                        <span th:if="${tarefa.status == T(com.biopark.tarefas.model.TarefaStatus).FINISHED}" class="status status-concluida">Concluída</span>
+                        <span th:unless="${tarefa.status == T(com.biopark.tarefas.model.TarefaStatus).FINISHED}" class="status status-pendente">Pendente</span>
                     </td>
                     <td th:text="${#temporals.format(tarefa.dataCriacao, 'dd/MM/yyyy')}"></td>
                     <td class="actions">

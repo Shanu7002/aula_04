@@ -41,14 +41,5 @@ public class TarefaService {
     public void excluir(Long id) {
         tarefaRepository.deleteById(id);
     }
-
-    
-    // public void alterarStatus(Long id) {
-    //     tarefaRepository.findById(id).ifPresent(tarefa -> {
-    //         tarefa.setConcluida(!tarefa.getConcluida());
-    //         tarefaRepository.save(tarefa);
-    //     });
-    // }
-
     
 }

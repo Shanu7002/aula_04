@@ -19,14 +19,17 @@ public class TarefaRepository {
 
     public TarefaRepository() {
         // Pré-cadastrar 3 tarefas de exemplo
-        Tarefa t1 = new Tarefa("Estudar Spring Boot", "Revisar os conceitos de Spring Boot e Thymeleaf");
+        Tarefa t1 = new Tarefa("Estudar Spring Boot", "Revisar os conceitos de Spring Boot e Thymeleaf", TarefaStatus.PENDING);
         save(t1);
 
-        Tarefa t2 = new Tarefa("Fazer compras", "Comprar frutas, legumes e pão no mercado");
+        Tarefa t2 = new Tarefa("Fazer compras", "Comprar frutas, legumes e pão no mercado", TarefaStatus.PENDING);
         save(t2);
 
-        Tarefa t3 = new Tarefa("Organizar escritório", "Limpar a mesa e organizar os documentos");
+        Tarefa t3 = new Tarefa("Organizar escritório", "Limpar a mesa e organizar os documentos", TarefaStatus.PENDING);
         save(t3);
+
+        Tarefa t4 = new Tarefa("Organizar escritório", "Limpar a mesa e organizar os documentos", TarefaStatus.FINISHED);
+        save(t4);
     }
 
     public Tarefa save(Tarefa tarefa) {
