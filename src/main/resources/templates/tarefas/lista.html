@@ -7,6 +7,10 @@
 
         <a th:href="@{/tarefas/novo}" class="btn btn-primary">Nova Tarefa</a>
 
+        <a th:href="@{/tarefas}" class="btn-filter">Todas</a>
+        <a th:href="@{/tarefas/pendentes}" class="btn-filter">Pendentes</a>
+        <a th:href="@{/tarefas/concluidas}" class="btn-filter">Concluídas</a>
+
         <div class="alert alert-success" th:if="${mensagem}">
             <span th:text="${mensagem}"></span>
         </div>
