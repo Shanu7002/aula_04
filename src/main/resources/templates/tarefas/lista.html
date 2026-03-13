@@ -11,6 +11,8 @@
         <a th:href="@{/tarefas/pendentes}" class="btn-filter">Pendentes</a>
         <a th:href="@{/tarefas/concluidas}" class="btn-filter">Concluídas</a>
 
+        <p class="status">Concluídas: <span th:text="${totalConcluidas}"></span> / Pendentes: <span th:text="${totalPendentes}"></span></p>
+
         <div class="alert alert-success" th:if="${mensagem}">
             <span th:text="${mensagem}"></span>
         </div>

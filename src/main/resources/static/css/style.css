@@ -114,6 +114,10 @@ h1 {
     border-color: #007bff;
 }
 
+.status {
+    display: inline-block;
+}
+
 .highlight-concluidas {
     color:#007bff
 }

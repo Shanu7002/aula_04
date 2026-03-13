@@ -26,18 +26,24 @@ public class TarefaController {
 
     @GetMapping
     public String listar(Model model) {
+        model.addAttribute("totalConcluidas", tarefaService.contarConcluidas());
+        model.addAttribute("totalPendentes", tarefaService.contarPendentes());
         model.addAttribute("tarefas", tarefaService.listarTodas());
         return "tarefas/lista";
     }
 
     @GetMapping("/pendentes")
     public String listarPendentes(Model model) {
+        model.addAttribute("totalConcluidas", tarefaService.contarConcluidas());
+        model.addAttribute("totalPendentes", tarefaService.contarPendentes());
         model.addAttribute("tarefas", tarefaService.listarPendentes());
         return "tarefas/lista";
     }
 
     @GetMapping("/concluidas")
     public String listarConcluidas(Model model) {
+        model.addAttribute("totalConcluidas", tarefaService.contarConcluidas());
+        model.addAttribute("totalPendentes", tarefaService.contarPendentes());
         model.addAttribute("tarefas", tarefaService.listarConcluidas());
         return "tarefas/lista";
     }

@@ -34,6 +34,14 @@ public class TarefaService {
         return tarefaRepository.findByStatus(TarefaStatus.FINISHED);
     }
 
+    public int contarConcluidas() {
+        return tarefaRepository.findByStatus(TarefaStatus.FINISHED).size();
+    }
+
+    public int contarPendentes() {
+        return tarefaRepository.findByStatus(TarefaStatus.PENDING).size();
+    }
+
     public Optional<Tarefa> buscarPorId(Long id) {
         return tarefaRepository.findById(id);
     }
