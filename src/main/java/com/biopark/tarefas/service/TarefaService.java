@@ -38,6 +38,11 @@ public class TarefaService {
         return tarefaRepository.findById(id);
     }
 
+    public void concluirTarefa(Long id) {
+        Optional<Tarefa> currentlyTask = tarefaRepository.findById(id);
+        currentlyTask.ifPresent(tarefaRepository::concluirTarefa);
+    }
+
     public void excluir(Long id) {
         tarefaRepository.deleteById(id);
     }

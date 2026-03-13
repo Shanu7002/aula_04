@@ -94,10 +94,10 @@ public class TarefaController {
         return "redirect:/tarefas";
     }
 
-    // @GetMapping("/status/{id}")
-    // public String alternarStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-    //     tarefaService.alterarStatus(id);
-    //     redirectAttributes.addFlashAttribute("mensagem", "Status da tarefa alterado!");
-    //     return "redirect:/tarefas";
-    // }
+    @GetMapping("/status/{id}")
+    public String alternarStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        tarefaService.concluirTarefa(id);
+        redirectAttributes.addFlashAttribute("mensagem", "Status da tarefa alterado!");
+        return "redirect:/tarefas";
+    }
 }

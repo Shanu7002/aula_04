@@ -48,6 +48,10 @@ public class TarefaRepository {
         return Optional.ofNullable(tarefas.get(id));
     }
 
+    public void concluirTarefa(Tarefa task) {
+        task.setStatus(TarefaStatus.FINISHED);
+    }
+
     public List<Tarefa> findByStatus(TarefaStatus status) {
         List<Tarefa> list = new ArrayList<>(tarefas.values());
         List<Tarefa> finalList = new ArrayList<>();
